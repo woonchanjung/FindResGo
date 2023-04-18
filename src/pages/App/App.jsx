@@ -4,6 +4,8 @@ import AuthPage from "../AuthPage/AuthPage";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
+import Home from "../Home/Home";
+import Restaurant from "../../components/Restaurant/Restaurant";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -17,10 +19,10 @@ export default function App() {
       {user ? (
         <>
           <NavBar user={user} updateUser={updateUser} />
-          <Route path="/" exact>
-            <HomePage />
-            <RandomRestaurant />
-          </Route>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/restaurant/:id" element={<Restaurant />} />
+          </Routes>
         </>
       ) : (
         <AuthPage setUser={updateUser} />
