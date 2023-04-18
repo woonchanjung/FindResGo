@@ -79,37 +79,37 @@ const Home = () => {
         });
     }
   }, [latitude, longitude]);
-  // Function to generate random restaurant
-  const handleGenerateRandomRestaurant = () => {
-    if (restaurants.length > 0) {
-      const randomIndex = Math.floor(Math.random() * restaurants.length);
-      setRandomRestaurant(restaurants[randomIndex]);
-    }
-  };
+  // // // Function to generate random restaurant
+  // // const handleGenerateRandomRestaurant = () => {
+  // //   if (restaurants.length > 0) {
+  // //     const randomIndex = Math.floor(Math.random() * restaurants.length);
+  // //     setRandomRestaurant(restaurants[randomIndex]);
+  // //   }
+  // // };
 
-  return (
-    <div>
-      {/* Button to trigger handleGenerateRandomRestaurant */}
-      <button onClick={handleGenerateRandomRestaurant}>
-        Generate Random Restaurant
-      </button>
-      {/* JSX code for rendering restaurant data in the UI */}
-      {randomRestaurant ? (
-        <div>
-          <h2>Random Restaurant</h2>
-          <p>Name: {randomRestaurant.name}</p>
-          <p>Image URL: {randomRestaurant.image_url}</p>
-          <p>Rating: {randomRestaurant.rating}</p>
-          <p>Review Count: {randomRestaurant.review_count}</p>
-          <p>Location: {randomRestaurant.location}</p>
-          <p>Phone: {randomRestaurant.phone}</p>
-          <p>URL: {randomRestaurant.url}</p>
-        </div>
-      ) : (
-        <p>No restaurants available.</p> // Added a message for when randomRestaurant is null
-      )}
-    </div>
-  );
+  // // return (
+  // //   <div>
+  // //     {/* Button to trigger handleGenerateRandomRestaurant */}
+  // //     <button onClick={handleGenerateRandomRestaurant}>
+  // //       Generate Random Restaurant
+  // //     </button>
+  // //     {/* JSX code for rendering restaurant data in the UI */}
+  // //     {randomRestaurant ? (
+  // //       <div>
+  // //         <h2>Random Restaurant</h2>
+  // //         <p>Name: {randomRestaurant.name}</p>
+  // //         <p>Image URL: {randomRestaurant.image_url}</p>
+  // //         <p>Rating: {randomRestaurant.rating}</p>
+  // //         <p>Review Count: {randomRestaurant.review_count}</p>
+  // //         <p>Location: {randomRestaurant.location}</p>
+  // //         <p>Phone: {randomRestaurant.phone}</p>
+  // //         <p>URL: {randomRestaurant.url}</p>
+  // //       </div>
+  // //     ) : (
+  // //       <p>No restaurants available.</p> // Added a message for when randomRestaurant is null
+  // //     )}
+  // //   </div>
+  // );
 };
 
 export default Home;
