@@ -1,0 +1,14 @@
+.ImageContainer .img{
+    justify-content: center;
+    width: 100%; 
+    height: auto; 
+  }
+  
+  /* Media query for iPhone 12 or devices with similar screen size */
+  @media only screen and (max-width: 390px) {
+    .ImageCpntainer {
+      max-width: 100%; 
+      height: auto; 
+    }
+  }
+  
