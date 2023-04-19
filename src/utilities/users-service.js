@@ -35,6 +35,14 @@ export function logOut(){
   localStorage.removeItem('token')
 }
 
+export async function login(credentials) {
+  // Delegate the AJAX request to the users-api.js
+  // module.
+  const token = await usersAPI.login(credentials);
+  localStorage.setItem('token', token);
+  return getUser();
+}
+
 export async function checkToken(){
     // Just so that you don't forget how to use .then
     return usersAPI.checkToken()

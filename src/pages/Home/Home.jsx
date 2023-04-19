@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddButton from "../../components/AddButton/AddButton";
 
 const Home = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -6,18 +7,21 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  
+
   const getRandomRestaurant = async () => {
     try {
-      console.log("Entering getRandomRestaurant")
+      console.log("Entering getRandomRestaurant");
       console.log("lat: ", latitude);
       console.log("long: ", longitude);
-      const response = await fetch(`/api/restaurants?latitude=${latitude}&longitude=${longitude}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await fetch(
+        `/api/restaurants?latitude=${latitude}&longitude=${longitude}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log("fetched");
       const data = await response.json();
       console.log(data);
@@ -45,7 +49,7 @@ const Home = () => {
           (position) => {
             setLatitude(position.coords.latitude);
             setLongitude(position.coords.longitude);
-            console.log("Entering getLocation")
+            console.log("Entering getLocation");
             // console.log("Latitude:", position.coords.latitude);
             // console.log("Longitude:", position.coords.longitude);
           },
@@ -59,13 +63,19 @@ const Home = () => {
       if (latitude && longitude) {
         getRandomRestaurant();
       }
-    }
+    };
 
     getLocation();
     // Calls location only once
     // SOURCE: https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/
   }, [latitude, longitude]);
-  
+
+  // Function to add the random restaurant to the list
+  const addRandomRestaurantToList = (restaurant) => {
+      const { name, image } = randomRestaurant; 
+      addRandomRestaurantToList({ ...randomRestaurant, name, image });
+  };
+
   return (
     <div>
       {error && <p>{error}</p>}
@@ -74,18 +84,21 @@ const Home = () => {
           <h1>Random Restaurant</h1>
           <h2>{randomRestaurant.name}</h2>
           <div className="ImageContainer">
-          <img src={randomRestaurant.image_url} alt={randomRestaurant.name}/>
+            <img src={randomRestaurant.image_url} alt={randomRestaurant.name} />
           </div>
           <p>{randomRestaurant.location.address1}</p>
-          <p>{randomRestaurant.location.city}, {randomRestaurant.location.state} {randomRestaurant.location.zip_code}</p>
+          <p>
+            {randomRestaurant.location.city}, {randomRestaurant.location.state}{" "}
+            {randomRestaurant.location.zip_code}
+          </p>
           <p>Rating: {randomRestaurant.rating}</p>
           <p>Price: {randomRestaurant.price}</p>
           <button onClick={getRandomRestaurant}>Get Random Restaurant</button>
+          <AddButton onAddButtonClick={addRandomRestaurantToList} restaurant={randomRestaurant} />
         </div>
-        
       ) : (
         <>
-        <p>Loading restaurant...</p>
+          <p>Loading restaurant...</p>
         </>
       )}
     </div>

@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import Home from "../Home/Home";
 import Restaurant from "../../components/Restaurant/Restaurant";
+import UserRestaurantList from "../UserRestaurantList/UserRestaurantList";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -22,6 +23,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/restaurant/:id" element={<Restaurant />} />
+            <Route path="/orders/new" element={<UserRestaurantList />} />
+            <Route path="*" element={<h1>404 - Not Found</h1>} />
           </Routes>
         </>
       ) : (
