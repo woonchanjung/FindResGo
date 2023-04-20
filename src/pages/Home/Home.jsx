@@ -107,20 +107,21 @@ const Home = () => {
               />
             </a>
           </div>
-          <p>{randomRestaurant.location.address1}</p>
-          <p>
+          <ul>
+          <li>{randomRestaurant.location.address1}</li>
+          <li>
             {randomRestaurant.location.city}, {randomRestaurant.location.state}{" "}
             {randomRestaurant.location.zip_code}
-          </p>
-          <p>Rating: {randomRestaurant.rating}</p>
-          <p>Price: {randomRestaurant.price}</p>
-          <p>
+          </li>
+          <li>Rating: {randomRestaurant.rating}</li>
+          <li>Price: {randomRestaurant.price}</li>
+          <li>
             Category:{" "}
             {randomRestaurant.categories
               .map((category) => category.title)
               .join(", ")}
-          </p>
-          <p>
+          </li>
+          <li>
             Yelp URL:{" "}
             <a
               href={randomRestaurant.url}
@@ -129,7 +130,8 @@ const Home = () => {
             >
               Link
             </a>{" "}
-          </p>
+          </li>
+          </ul>
           <button onClick={getRandomRestaurant}>Get Random Restaurant</button>
           <button onClick={handleAddRestaurant}>Add Restaurant</button>
         </div>
