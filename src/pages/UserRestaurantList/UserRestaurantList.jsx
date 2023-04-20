@@ -1,5 +1,5 @@
-// In your frontend React component for the userRestaurantList page
 import React, { useEffect, useState } from 'react';
+// import * as restaurantAPI from '../../../routes/api/restaurants';
 
 const UserRestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -8,7 +8,7 @@ const UserRestaurantList = () => {
     // Fetch restaurant data from backend
     const fetchRestaurants = async () => {
       try {
-        const response = await fetch('/api/restaurants');
+        const response = await fetch('/api/addrestaurants');
         const data = await response.json();
         if (response.ok) {
           setRestaurants(data);
@@ -26,15 +26,15 @@ const UserRestaurantList = () => {
   // Render restaurant data in UI
   return (
     <div>
-      <h1>User Restaurant List</h1>
-      <ul>
-        {restaurants.map(restaurant => (
-          <li key={restaurant._id}>
-            <h3>{restaurant.name}</h3>
-            <p>{restaurant.address}</p>
-          </li>
-        ))}
-      </ul>
+      <h1>My Restaurant List</h1>
+      {restaurants.map(restaurant => (
+        <div key={restaurant._id}>
+          {/* Render the restaurant data */}
+          <h2>{restaurant.name}</h2>
+          <p>{restaurant.address}</p>
+          <img src={restaurant.image} alt={restaurant.name} />
+        </div>
+      ))}
     </div>
   );
 };

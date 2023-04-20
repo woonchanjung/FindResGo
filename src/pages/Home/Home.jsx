@@ -70,10 +70,27 @@ const Home = () => {
   }, [latitude, longitude]);
 
   // Event Handler to add a restaurant to user's list
-  async function addRandomRestaurantToList(restaurantId) {
-    console.log("Entering addRandomRestaurantToList Function, Restaurant ID:", restaurantId)
-    alert(`Restaurant ID: ${restaurantId} added to your list!`)
-  }
+  const handleAddRestaurant = async () => {
+    try {
+      // Send a POST request to the backend to add the randomly generated restaurant
+      const response = await fetch('/api/addrestaurants', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(randomRestaurant)
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Restaurant added:", data);
+      } else {
+        console.error("Error adding restaurant:", data.error);
+      }
+    } catch (error) {
+      console.error("Error adding restaurant:", error);
+    }
+  };
 
   return (
     <div>
@@ -114,11 +131,7 @@ const Home = () => {
             </a>{" "}
           </p>
           <button onClick={getRandomRestaurant}>Get Random Restaurant</button>
-          <button
-            onClick={() => addRandomRestaurantToList(randomRestaurant.id)}
-          >
-            ADD
-          </button>
+          <button onClick={handleAddRestaurant}>Add Restaurant</button>
         </div>
       ) : (
         <>
