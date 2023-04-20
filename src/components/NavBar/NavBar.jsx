@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
+import Logo from "../Logo/Logo";
 
 export default function NavBar({ user, updateUser }) {
   function handleLogOut() {
@@ -10,7 +11,7 @@ export default function NavBar({ user, updateUser }) {
 
   return (
     <nav>
-      <h2>NAVBAR</h2>
+      <Logo />
       <Link to="/">Home</Link>
       &nbsp; | &nbsp;
       <Link to="/userRestaurantList">My Restaurant List</Link>
