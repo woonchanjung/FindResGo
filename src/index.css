@@ -1,11 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* CSS Custom Properties */
 :root {
   --white: #FFFFFF;
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
-  --tan-4: #aebed3;
-  --orange: #d3332dd0;
+  --tan-4: #3e444d;
+  --orange: #3e444d;
   --text-light: #968c84;
   --text-dark: #574b43;
 }
@@ -81,7 +85,7 @@ code {
 }
 
 .form-container {
-  padding: 3vmin;
+  padding: 4vmin;
   background-color: var(--tan-1);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
@@ -126,7 +130,7 @@ a.button {
   padding: 1vmin;
   color: var(--white);
   background-color: var(--orange);
-  font-size: 6vmin;
+  font-size: 5vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
