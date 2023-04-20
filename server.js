@@ -16,8 +16,6 @@ app.use(require('./config/checkToken'));
 //routes
 app.use('/api/users', require('./routes/api/users'));
 
-
-
 // Define route handler for /api/restaurants
 app.get('/api/restaurants', async (req, res) => {
   const latitude = req.query.latitude;

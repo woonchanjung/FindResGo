@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AddButton from "../../components/AddButton/AddButton";
 
 const Home = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -70,11 +69,11 @@ const Home = () => {
     // SOURCE: https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/
   }, [latitude, longitude]);
 
-  // Function to add the random restaurant to the list
-  const addRandomRestaurantToList = (restaurant) => {
-      const { name, image } = randomRestaurant; 
-      addRandomRestaurantToList({ ...randomRestaurant, name, image });
-  };
+  // Event Handler to add a restaurant to user's list
+  async function addRandomRestaurantToList(restaurantId) {
+    console.log("Entering addRandomRestaurantToList Function, Restaurant ID:", restaurantId)
+    alert(`Restaurant ID: ${restaurantId} added to your list!`)
+  }
 
   return (
     <div>
@@ -84,7 +83,12 @@ const Home = () => {
           <h1>Random Restaurant</h1>
           <h2>{randomRestaurant.name}</h2>
           <div className="ImageContainer">
-            <img src={randomRestaurant.image_url} alt={randomRestaurant.name} />
+            <a href={randomRestaurant.url}>
+              <img
+                src={randomRestaurant.image_url}
+                alt={randomRestaurant.name}
+              />
+            </a>
           </div>
           <p>{randomRestaurant.location.address1}</p>
           <p>
@@ -93,8 +97,28 @@ const Home = () => {
           </p>
           <p>Rating: {randomRestaurant.rating}</p>
           <p>Price: {randomRestaurant.price}</p>
+          <p>
+            Category:{" "}
+            {randomRestaurant.categories
+              .map((category) => category.title)
+              .join(", ")}
+          </p>
+          <p>
+            Yelp URL:{" "}
+            <a
+              href={randomRestaurant.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>{" "}
+          </p>
           <button onClick={getRandomRestaurant}>Get Random Restaurant</button>
-          <AddButton onAddButtonClick={addRandomRestaurantToList} restaurant={randomRestaurant} />
+          <button
+            onClick={() => addRandomRestaurantToList(randomRestaurant.id)}
+          >
+            ADD
+          </button>
         </div>
       ) : (
         <>

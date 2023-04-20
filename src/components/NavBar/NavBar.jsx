@@ -13,7 +13,7 @@ export default function NavBar({ user, updateUser }) {
       <h2>NAVBAR</h2>
       <Link to="/">Home</Link>
       &nbsp; | &nbsp;
-      <Link to="/orders/new">My List</Link>
+      <Link to="/userRestaurantList">My Restaurant List</Link>
       &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>
         Log Out
