@@ -22,7 +22,7 @@
 
 ![Follows](https://img.shields.io/github/followers/ryanqle.svg?style=social&label=Follow&maxAge=2592000)
 
-## **[CLICK HERE TO CHECKOUT THE FindResGo!](INSERT LINK)**
+## **[CLICK HERE TO CHECKOUT THE FindResGo!](https://findresgo.herokuapp.com/)**
 
 </div>
 
