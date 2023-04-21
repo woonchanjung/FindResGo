@@ -34,7 +34,16 @@
 
 ### Description:
 
-**_Brainwaves_** is a Full-Stack React Web Application that utilizes Node.js, Express.js, React, MongoDB, Mongoose, Tailwind Css, and JavaScript to help users track their moods over time. Whether you're feeling happy, sad, or somewhere in between, Brainwaves allows you to record and monitor your emotions in a convenient and user-friendly way. The app utilizes a simple interface that allows you to log your mood with just a few taps. With Brainwaves, you are able to track common triggers and emotions related to your moods. By using Brainwaves, you can take control of your emotional well-being and improve your overall quality of life with just a few taps!
+FindResGo is a web application that helps you discover and save your favorite restaurants. With FindResGo, you can search for restaurants based on your location and save restaurants to your personal list for easy access later.
+
+Features:
+- Search for restaurants near your location: FindResGo uses your current location to provide you with a list of restaurants in your area, so you can easily find the perfect spot for your next meal.
+- View detailed restaurant information: Get access to important details about each restaurant, such as ratings, reviews, photos, and contact information, to help you make informed dining decisions.
+- Save your favorite restaurants: Found a restaurant you love? Save it to your personal list on FindResGo, so you can easily access it later and keep track of your favorite dining spots.
+- User-friendly interface: FindResGo features a clean and intuitive user interface that makes it easy to search for, view, and save restaurants with just a few clicks.
+
+Whether you're a foodie looking for new culinary experiences or simply want a convenient way to keep track of your favorite restaurants, FindResGo is the perfect tool for you. Happy dining!
+
 
 ## :link: Associated Links:
 
@@ -128,6 +137,11 @@ const getRandomRestaurant = async () => {
 <div align="center">
  <h2> Future IceBox </h2>
 </div>
+
+- Share restaurant suggestions with friends: Easily share restaurant suggestions with your friends through social media or messaging apps, so you can plan dining outings together.
+- View reviews and ratings: Get access to reviews and ratings of the suggested restaurants, helping you make informed dining decisions based on the experiences of other diners.
+- Discover nearby tourist attractions: FindResGo suggests nearby tourist attractions or landmarks to visit before or after your restaurant visit, enhancing your overall dining experience.
+- Filter suggestions based on cuisine and price: Customize your restaurant suggestions by filtering based on cuisine type and price range, ensuring that you find restaurants that match your preferences and budget.
 
 Acknowledgements: 
 - Kenneth C.
