@@ -73,13 +73,27 @@ const Home = () => {
   }, [latitude, longitude]);
 
   // Event Handler to add a restaurant to user's list
-  async function handleAddRestaurant(user_id, id, name, phone, address, image_url) {
-    await restaurantApi.addFavorite(user_id, id, name, phone, address, image_url);
+  async function handleAddRestaurant(
+    user_id,
+    id,
+    name,
+    phone,
+    address,
+    image_url
+  ) {
+    await restaurantApi.addFavorite(
+      user_id,
+      id,
+      name,
+      phone,
+      address,
+      image_url
+    );
     console.log("sent");
-  };
+  }
 
   return (
-    <div className = "HomeScreen">
+    <div className="HomeScreen">
       {/* {error && <p>{error}</p>} */}
       {randomRestaurant ? (
         <div>
@@ -93,37 +107,58 @@ const Home = () => {
             </a>
           </div>
           <ul>
-          <li>Address: {randomRestaurant.location.address1}</li>
-          <li>
-            {randomRestaurant.location.city}, {randomRestaurant.location.state}{" "}
-            {randomRestaurant.location.zip_code}
-          </li>
-          <li>Phone#: {randomRestaurant.display_phone}</li>
-          <li>Rating: {randomRestaurant.rating} / Price: {randomRestaurant.price}</li>
-          <li>
-            Category:{" "}
-            {randomRestaurant.categories
-              .map((category) => category.title)
-              .join(", ")}
-          </li>
-          <li>
-            <a
-              href={randomRestaurant.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              YELP LINK
-            </a>{" "}
-          </li>
+            <li>Address: {randomRestaurant.location.address1}</li>
+            <li>
+              {randomRestaurant.location.city},{" "}
+              {randomRestaurant.location.state}{" "}
+              {randomRestaurant.location.zip_code}
+            </li>
+            <li>Phone#: {randomRestaurant.display_phone}</li>
+            <li>
+              Rating: {randomRestaurant.rating} / Price:{" "}
+              {randomRestaurant.price}
+            </li>
+            <li>
+              Category:{" "}
+              {randomRestaurant.categories
+                .map((category) => category.title)
+                .join(", ")}
+            </li>
+            <li>
+              <a
+                href={randomRestaurant.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YELP LINK
+              </a>{" "}
+            </li>
           </ul>
-          <button onClick={getRandomRestaurant}>Get Another Lucky Restaurant</button>
-          <button onClick={() => handleAddRestaurant(user._id, randomRestaurant.id, randomRestaurant.name, randomRestaurant.phone, randomRestaurant.location.address1, randomRestaurant.image_url)}>Add to Favorite</button>
+          <button onClick={getRandomRestaurant}>
+            Get Another Lucky Restaurant
+          </button>
+          <button
+            onClick={() =>
+              handleAddRestaurant(
+                user._id,
+                randomRestaurant.id,
+                randomRestaurant.name,
+                randomRestaurant.phone,
+                randomRestaurant.location.address1,
+                randomRestaurant.image_url
+              )
+            }
+          >
+            Add to Favorite
+          </button>
         </div>
       ) : (
         <>
-        <div className = "LoadingContainer">
-          <p>Building a restaurant for you...</p>
+          <hr></hr>
+          <div className="LoadingContainer">
+            <p>Building a restaurant for you...</p>
           </div>
+          <hr></hr>
         </>
       )}
     </div>
