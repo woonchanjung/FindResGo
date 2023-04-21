@@ -53,7 +53,7 @@ Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.or
 
 ### Landing Page
 
-![loginPage]([https://i.imgur.com/JlA0Oyx.gif](https://i.imgur.com/MHlYrs2.png))
+![loginPage](https://i.imgur.com/MHlYrs2.png)
 
 ### SignUp Page
 
