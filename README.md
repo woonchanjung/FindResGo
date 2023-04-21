@@ -53,7 +53,7 @@ Whether you're a foodie looking for new culinary experiences or simply want a co
 
 Click the following link for search YELP API! [YELP](https://docs.developer.yelp.com/reference/v3_business_search)
 
-Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/)
+Click the following link for GeoLocation [GEOLOCATION](https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/)
 
 <hr></hr>
 
