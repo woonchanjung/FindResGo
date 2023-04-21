@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import * as restaurantApi from "../../utilities/restaurants-api";
-import sendRequest from "../../utilities/send-request";
 import { getUser } from "../../utilities/users-service";
 
 const Home = () => {
@@ -11,6 +10,26 @@ const Home = () => {
   const [longitude, setLongitude] = useState(null);
   const [list, setList] = useState([]);
   const [user, setUser] = useState(getUser());
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          console.log("Entering getLocation");
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      setError("Location is not supported by this browser.");
+    }
+    if (latitude && longitude) {
+      getRandomRestaurant();
+    }
+  };
 
   const getRandomRestaurant = async () => {
     try {
@@ -42,26 +61,6 @@ const Home = () => {
     } catch (error) {
       console.error("Error fetching restaurants:", error);
       setError("Error fetching restaurants. Please try again later.");
-    }
-  };
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-          console.log("Entering getLocation");
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-        }
-      );
-    } else {
-      setError("Location is not supported by this browser.");
-    }
-    if (latitude && longitude) {
-      getRandomRestaurant();
     }
   };
 
