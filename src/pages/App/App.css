@@ -1,6 +1,7 @@
 * {
   border: 1px solid red;
-  color: white;
+  text-align: center;
+  justify-content: center;
 }
 
 img {

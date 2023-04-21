@@ -1,9 +1,11 @@
-//variables
+// variables
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+//connect to db
 require('dotenv').config();
 require('./config/database');
+
 const app = express();
 const fetch = require('node-fetch');
 
@@ -11,19 +13,25 @@ const fetch = require('node-fetch');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'dist')));
+
+// middleware that adds the user object from a JWT to req.user
 app.use(require('./config/checkToken'));
 
+
 //routes
+const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/restaurant', require('./routes/api/restaurant'));
+app.use('/api/restaurant/:id/restaurants', require('./routes/api/restaurant'));
 
 // Define route handler for /api/restaurants
-app.get('/api/restaurants', async (req, res) => {
+app.get('/api/random_restaurant', async (req, res) => {
   const latitude = req.query.latitude;
   const longitude = req.query.longitude;
   console.log(`Fetching restaurants near latitude: ${latitude}, longitude: ${longitude}...`)
 
   // Make fetch request to Yelp API
-  const apiUrl = `https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20&latitude=${latitude}&longitude=${longitude}`;
+  const apiUrl = `https://api.yelp.com/v3/businesses/search?sort_by=best_match&&open_now=true&limit=20&latitude=${latitude}&longitude=${longitude}`;
   const options = {
     method: 'GET',
     headers: {
@@ -35,7 +43,6 @@ app.get('/api/restaurants', async (req, res) => {
   try {
     const response = await fetch(apiUrl, options);
     const data = await response.json();
-    console.log(data);
     if (response.ok) {
       res.json(data);
     } else {
@@ -46,6 +53,7 @@ app.get('/api/restaurants', async (req, res) => {
     res.status(500).json({ error: "Error fetching restaurants from Yelp API" });
   }
 });
+
 
 //catch all
 app.get('/*', function (req, res) {

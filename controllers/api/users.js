@@ -1,26 +1,25 @@
-const User = require('../../models/user')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const User = require('../../models/user');
 
 module.exports = {
   create,
-  checkToken,
-  login,
-}
+  login
+};
 
-async function create(req, res){
+async function create(req, res) {
   try {
-    const user = await User.create(req.body)
-    const token = createJWT(user)
-    res.json(token)
-  } catch (error) {
-    res.status(400).json(error)
+    // Add the user to the db
+    const user = await User.create(req.body);
+    // token will be a string
+    const token = createJWT(user);
+    console.log('token in controller', token)
+    // Yes, we can serialize a string
+    res.json(token);
+  } catch (err) {
+    // Probably a dup email
+    res.status(400).json(err);
   }
-}
-
-function checkToken(req, res) {
-  // req.user will always be there for you when a token is sent
-  console.log('req.user', req.user);
-  res.json(req.exp);
 }
 
 async function login(req, res) {
@@ -37,10 +36,14 @@ async function login(req, res) {
   }
 }
 
-function createJWT(user){
+
+/*-- Helper Functions --*/
+
+function createJWT(user) {
   return jwt.sign(
-    {user},
+    // data payload
+    { user },
     process.env.SECRET,
-    { expiresIn: '24hr'}
-  )
+    { expiresIn: '24h' }
+  );
 }

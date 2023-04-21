@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import * as restaurantApi from "../../utilities/restaurants-api";
+import sendRequest from "../../utilities/send-request";
+import { getUser } from "../../utilities/users-service";
 
 const Home = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -6,6 +9,8 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [list, setList] = useState([]);
+  const [user, setUser] = useState(getUser());
 
   const getRandomRestaurant = async () => {
     try {
@@ -13,7 +18,7 @@ const Home = () => {
       console.log("lat: ", latitude);
       console.log("long: ", longitude);
       const response = await fetch(
-        `/api/restaurants?latitude=${latitude}&longitude=${longitude}`,
+        `/api/random_restaurant?latitude=${latitude}&longitude=${longitude}`,
         {
           method: "GET",
           headers: {
@@ -40,65 +45,45 @@ const Home = () => {
     }
   };
 
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          console.log("Entering getLocation");
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      setError("Location is not supported by this browser.");
+    }
+    if (latitude && longitude) {
+      getRandomRestaurant();
+    }
+  };
+
   useEffect(() => {
     // Get user's location
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLatitude(position.coords.latitude);
-            setLongitude(position.coords.longitude);
-            console.log("Entering getLocation");
-            // console.log("Latitude:", position.coords.latitude);
-            // console.log("Longitude:", position.coords.longitude);
-          },
-          (error) => {
-            console.error("Error getting user location:", error);
-          }
-        );
-      } else {
-        setError("Location is not supported by this browser.");
-      }
-      if (latitude && longitude) {
-        getRandomRestaurant();
-      }
-    };
-
     getLocation();
     // Calls location only once
     // SOURCE: https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/
   }, [latitude, longitude]);
 
   // Event Handler to add a restaurant to user's list
-  const handleAddRestaurant = async () => {
-    try {
-      // Send a POST request to the backend to add the randomly generated restaurant
-      const response = await fetch('/api/addrestaurants', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(randomRestaurant)
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        console.log("Restaurant added:", data);
-      } else {
-        console.error("Error adding restaurant:", data.error);
-      }
-    } catch (error) {
-      console.error("Error adding restaurant:", error);
-    }
+  async function handleAddRestaurant(user_id, id, name, phone, address, image_url) {
+    await restaurantApi.addFavorite(user_id, id, name, phone, address, image_url);
+    console.log("sent");
   };
 
   return (
     <div>
-      {error && <p>{error}</p>}
+      {/* {error && <p>{error}</p>} */}
       {randomRestaurant ? (
         <div>
-          <h2>Random Restaurant</h2>
-          <h3>{randomRestaurant.name}</h3>
+          <h2>Lucky Restaurant</h2>
           <div className="ImageContainer">
             <a href={randomRestaurant.url}>
               <img
@@ -108,7 +93,8 @@ const Home = () => {
             </a>
           </div>
           <ul>
-          <li>{randomRestaurant.location.address1}</li>
+          <li>Address: {randomRestaurant.location.address1}</li>
+          <li>Phone#: {randomRestaurant.display_phone}</li>
           <li>
             {randomRestaurant.location.city}, {randomRestaurant.location.state}{" "}
             {randomRestaurant.location.zip_code}
@@ -122,22 +108,22 @@ const Home = () => {
               .join(", ")}
           </li>
           <li>
-            Yelp URL:{" "}
+            Yelp Link:{" "}
             <a
               href={randomRestaurant.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Link
+              YELP
             </a>{" "}
           </li>
           </ul>
-          <button onClick={getRandomRestaurant}>Get Random Restaurant</button>
-          <button onClick={handleAddRestaurant}>Add Restaurant</button>
+          <button onClick={getRandomRestaurant}>Get Another Lucky Restaurant</button>
+          <button onClick={() => handleAddRestaurant(user._id, randomRestaurant.id, randomRestaurant.name, randomRestaurant.phone, randomRestaurant.location.address1, randomRestaurant.image_url)}>Add to Favorite</button>
         </div>
       ) : (
         <>
-          <p>Building restaurant for you...</p>
+          <p>Building a restaurant for you...</p>
         </>
       )}
     </div>
