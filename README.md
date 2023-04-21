@@ -3,7 +3,7 @@
 # WELCOME TO FindResGo
 ### Built by: **[Woonchan Jung](https://www.linkedin.com/in/woonchanjung/)**
 
-![alt text](https://imgur.com/SXIbWuq)
+![](https://i.imgur.com/SXIbWuq.png)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 ![Maintainer](https://img.shields.io/badge/Maintainer-woonchanjung-blue)
@@ -38,64 +38,96 @@
 
 ## :link: Associated Links:
 
-Click the following link to be redirected to the User Stories we either have already implemented, or plan on implementing! [Trello](https://trello.com/invite/b/f1wPS0iX/ATTI360f050ba3db39bdd144d5a5405c3093C25F7E1F/brainwaves)
+Click the following link for search YELP API! [YELP](https://docs.developer.yelp.com/reference/v3_business_search)
 
-Click the following link to be redirected to the Wireframe, ERD, and Design Inspiration for this project! [Whimsical](https://whimsical.com/brainwaves-6xrPrq391hNE3d896zc3mR)
+Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/)
 
 ### Landing Page
 
-![loginPage](https://i.imgur.com/JlA0Oyx.gif)
+![loginPage]([https://i.imgur.com/JlA0Oyx.gif](https://i.imgur.com/MHlYrs2.png))
 
-Welcome to Brainwaves! Log in in order to gain access to the all-in-one mood tracking application!
+### SignUp Page
 
-### Home Page
+![SignUp](https://i.imgur.com/bEvhTzg.png)
 
-![HomePage](https://i.imgur.com/15kurIf.gif)
+### Loading Page
 
-Here is where you are greeted to the varying categories of features currently offered by Brainwaves, with navigations to each location.
+![LoadingPage](https://i.imgur.com/253AlYA.png)
 
-### View Mood Page
+### My Restaurant List Page
 
-![ViewMoodPage](https://i.imgur.com/ERy8w7g.gif)
-
-View the moods you make here, along with the local date, and a randomly generated inspirational quote! You can also edit and delete you moods here, if you so choose.
-
-
-### Add a Mood Page
-
-![AddAMood](https://i.imgur.com/7R12k9C.gif)
-
-This page is where you will be introduced to a short questionnaire to help breakdown your current mental status.
+![MyRestaurantList](https://i.imgur.com/Wuh4QNo.png)
 
 <div align="center">
- <h2>:pencil: The Code Behind The Program:</h2>
+ <h2>The Code Behind The Program</h2>
 </div>
 
 ```
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newMood = {
-      feeling,
-      emotions,
-      triggers,
-      reflection, 
-    };
+const getRandomRestaurant = async () => {
     try {
-      const response = await createMood(newMood);
-      setMood(newMood);
-      localStorage.setItem('mood', JSON.stringify(newMood));
-      navigate('/moods');
+      console.log("Entering getRandomRestaurant");
+      console.log("lat: ", latitude);
+      console.log("long: ", longitude);
+      const response = await fetch(
+        `/api/random_restaurant?latitude=${latitude}&longitude=${longitude}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("fetched");
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        setRestaurants(data);
+        const randomIndex = Math.floor(Math.random() * data.businesses.length);
+        console.log("randomIndex:", randomIndex);
+        const randomRestaurant = data.businesses[randomIndex];
+        console.log("randomRestaurant:", randomRestaurant);
+        setRandomRestaurant(randomRestaurant);
+      } else {
+        setError("Error fetching restaurants. Please try again later.");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching restaurants:", error);
+      setError("Error fetching restaurants. Please try again later.");
     }
   };
 
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          console.log("Entering getLocation");
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      setError("Location is not supported by this browser.");
+    }
+    if (latitude && longitude) {
+      getRandomRestaurant();
+    }
+  };
+
+  useEffect(() => {
+    // Get user's location
+    getLocation();
+    // Calls location only once
+    // SOURCE: https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/
+  }, [latitude, longitude]);
+
 ```
 
 <div align="center">
- <h2>:chart_with_upwards_trend: Looking Forward (Roadmap) </h2>
+ <h2> Future IceBox </h2>
 </div>
-Brainwaves, like every human, has a lot of growing to do! Here is a short list of some goals for the future: 
 
 Acknowledgements: 
 - Kenneth C.
