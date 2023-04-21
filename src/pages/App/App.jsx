@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";

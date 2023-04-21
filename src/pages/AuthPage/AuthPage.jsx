@@ -8,7 +8,7 @@ export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <main className="AuthPage">
+    <main className=" ">
       <div>
       <div className="AuthPageLogo">
       <Logo /> 
