@@ -5,6 +5,8 @@
 
 ![](https://i.imgur.com/SXIbWuq.png)
 
+<hr></hr>
+ 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 ![Maintainer](https://img.shields.io/badge/Maintainer-woonchanjung-blue)
 ![Ask](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)
@@ -22,6 +24,8 @@
 
 ![Follows](https://img.shields.io/github/followers/ryanqle.svg?style=social&label=Follow&maxAge=2592000)
 
+<hr></hr>
+ 
 ## **[CLICK HERE TO CHECKOUT THE FindResGo!](https://findresgo.herokuapp.com/)**
 
 </div>
@@ -51,23 +55,39 @@ Click the following link for search YELP API! [YELP](https://docs.developer.yelp
 
 Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.org/news/how-to-get-user-location-with-javascript-geolocation-api/)
 
-### Landing Page
-
-<img src="https://i.imgur.com/MHlYrs2.png" width=50% height=50% align="center">
-
-### SignUp Page
-
-<img src="https://i.imgur.com/bEvhTzg.png" width=50% height=50% align="center">
-
-### Loading Page
-
-<img src="https://i.imgur.com/253AlYA.png" width=50% height=50% align="center">
-
-### My Restaurant List Page
-
-<img src="https://i.imgur.com/Wuh4QNo.png" width=50% height=50% align="center">
+<hr></hr>
 
 <div align="center">
+
+<h2>Landing Page</h2>
+
+<p align="center">
+<img src="https://i.imgur.com/MHlYrs2.png" width=50% height=50% align="center">
+</p>
+<hr></hr>
+ 
+<h2>SignUp Page</h2>
+
+<p align="center">
+<img src="https://i.imgur.com/bEvhTzg.png" width=50% height=50% align="center">
+</p>
+<hr></hr>
+ 
+<h2>Loading Page</h2>
+
+<p align="center">
+<img src="https://i.imgur.com/253AlYA.png" width=50% height=50% align="center">
+</p>
+<hr></hr>
+ 
+<h2>My Restaurant List Page</h2>
+
+<p align="center">
+<img src="https://i.imgur.com/Wuh4QNo.png" width=50% height=50% align="center">
+</p>
+<hr></hr>
+ 
+
  <h2>The Code Behind The Program</h2>
 </div>
 
