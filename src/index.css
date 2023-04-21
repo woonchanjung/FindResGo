@@ -22,6 +22,12 @@
 
 .NavBar a {
   color: var(--white);
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .ImageContainer {
@@ -188,6 +194,17 @@ ul {
   color: white
 }
 
+.HomeScreen a {
+  color: blue;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  font-family: arial, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .NavBarContainer {
   background-color: grey;
+  font-weight: bold;
 }

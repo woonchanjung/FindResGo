@@ -53,9 +53,9 @@ export default function NavBar({ user, updateUser }) {
             <Logo />
             <div className = "NavBarContainer">
             <hr></hr>
-            <Link to="/">New Random Restaurant</Link>
+            <Link to="/">New Rando Resto</Link>
             &nbsp; | &nbsp;
-            <Link to="/userRestaurantList">My Restaurant List</Link>
+            <Link to="/userRestaurantList">My Rest List</Link>
             &nbsp; | &nbsp;
             <Link to="" onClick={handleLogOut}>
               Log Out
