@@ -53,19 +53,19 @@ Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.or
 
 ### Landing Page
 
-![loginPage](https://i.imgur.com/MHlYrs2.png)
+<img src="https://i.imgur.com/MHlYrs2.png" width=50% height=50% align="center">
 
 ### SignUp Page
 
-![SignUp](https://i.imgur.com/bEvhTzg.png)
+<img src="https://i.imgur.com/bEvhTzg.png" width=50% height=50% align="center">
 
 ### Loading Page
 
-![LoadingPage](https://i.imgur.com/253AlYA.png)
+<img src="https://i.imgur.com/253AlYA.png" width=50% height=50% align="center">
 
 ### My Restaurant List Page
 
-![MyRestaurantList](https://i.imgur.com/Wuh4QNo.png)
+<img src="https://i.imgur.com/Wuh4QNo.png" width=50% height=50% align="center">
 
 <div align="center">
  <h2>The Code Behind The Program</h2>
