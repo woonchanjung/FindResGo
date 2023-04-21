@@ -13,11 +13,3 @@ export function addFavorite(user_id, id, name, phone, address, image_url){
 export function getFavorite(user_id) {
   return sendRequest(`${BASE_URL}/${user_id}`, 'GET');
 }
-
-// export function getList() {
-//     return sendRequest(`${BASE_URL}/list`);
-// }
-
-// export function addToList(id) {
-//     return sendRequest(`${BASE_URL}/list/${id}`, 'POST');
-// }
