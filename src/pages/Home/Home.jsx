@@ -123,7 +123,9 @@ const Home = () => {
         </div>
       ) : (
         <>
+        <div className = "LoadingContainer">
           <p>Building a restaurant for you...</p>
+          </div>
         </>
       )}
     </div>

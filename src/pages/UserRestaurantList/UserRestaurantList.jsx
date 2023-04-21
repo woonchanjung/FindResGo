@@ -19,7 +19,7 @@ const UserRestaurantList = () => {
 
   // Render restaurant data in UI
   return (
-    <div>
+    <div className="DetailsContainer">
       <h1>My Restaurant List</h1>
       {restaurants.map(restaurant => (
         <div key={restaurant._id}>
@@ -28,7 +28,9 @@ const UserRestaurantList = () => {
         <li>{restaurant.phone}</li>
         <li>{restaurant.address}</li>
         </ul>
+        <div className="ImageContainer">
         <img src={restaurant.image_url} alt={restaurant.name} />
+        </div>
         </div>
         ))
       }
