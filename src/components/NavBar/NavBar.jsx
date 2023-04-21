@@ -51,6 +51,8 @@ export default function NavBar({ user, updateUser }) {
               </svg>
             </button> */}
             <Logo />
+            <div className = "NavBarContainer">
+            <hr></hr>
             <Link to="/">New Random Restaurant</Link>
             &nbsp; | &nbsp;
             <Link to="/userRestaurantList">My Restaurant List</Link>
@@ -58,6 +60,8 @@ export default function NavBar({ user, updateUser }) {
             <Link to="" onClick={handleLogOut}>
               Log Out
             </Link>
+            </div>
+            <hr></hr>
             <h2>Welcome, {user.name}</h2>
           {/* </div>
         </div>

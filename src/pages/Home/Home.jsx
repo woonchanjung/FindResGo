@@ -79,7 +79,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className = "HomeScreen">
       {/* {error && <p>{error}</p>} */}
       {randomRestaurant ? (
         <div>
@@ -94,13 +94,12 @@ const Home = () => {
           </div>
           <ul>
           <li>Address: {randomRestaurant.location.address1}</li>
-          <li>Phone#: {randomRestaurant.display_phone}</li>
           <li>
             {randomRestaurant.location.city}, {randomRestaurant.location.state}{" "}
             {randomRestaurant.location.zip_code}
           </li>
-          <li>Rating: {randomRestaurant.rating}</li>
-          <li>Price: {randomRestaurant.price}</li>
+          <li>Phone#: {randomRestaurant.display_phone}</li>
+          <li>Rating: {randomRestaurant.rating} / Price: {randomRestaurant.price}</li>
           <li>
             Category:{" "}
             {randomRestaurant.categories
@@ -108,13 +107,12 @@ const Home = () => {
               .join(", ")}
           </li>
           <li>
-            Yelp Link:{" "}
             <a
               href={randomRestaurant.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              YELP
+              YELP LINK
             </a>{" "}
           </li>
           </ul>

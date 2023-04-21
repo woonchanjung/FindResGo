@@ -183,3 +183,11 @@ ul {
 .LoadingContainer {
   color: yellow
 }
+
+.HomeScreen {
+  color: white
+}
+
+.NavBarContainer {
+  background-color: grey;
+}
