@@ -86,7 +86,9 @@ Click the following link for GeoLocation [Whimsical](https://www.freecodecamp.or
 <img src="https://i.imgur.com/Wuh4QNo.png" width=50% height=50% align="center">
 </p>
 <hr></hr>
- 
+</div>
+
+<div align="center">
 
  <h2>The Code Behind The Program</h2>
 </div>
