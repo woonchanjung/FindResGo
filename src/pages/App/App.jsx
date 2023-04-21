@@ -5,6 +5,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from "../../utilities/users-service";
 import Home from "../Home/Home";
 import UserRestaurantList from "../UserRestaurantList/UserRestaurantList";
+import "./App.css"
 
 export default function App() {
   const [user, setUser] = useState(getUser());
