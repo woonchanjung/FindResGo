@@ -4,8 +4,8 @@
   --tan-1: #fbf9f6;
   --tan-2: #e7e2dd;
   --tan-3: #e2d9d1;
-  --tan-4: #3e444d;
-  --orange: #3e444d;
+  --tan-4: #C9AC6D;
+  --orange: #C9AC6D;
   --text-light: #968c84;
   --text-dark: #574b43;
 }
@@ -146,7 +146,7 @@ a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: #C9AC6D;
   font-size: 3vmin;
   font-weight: bold;
   text-decoration: none;
@@ -170,7 +170,7 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: #C9AC6D;
 }
 
 button[type="submit"] {
@@ -210,7 +210,7 @@ ul {
 }
 
 label {
-  background-color: #4c535e;
+  background-color:#C9AC6D;
   color: white;
   border-radius: 0.5vmin;
   font-weight: bold;

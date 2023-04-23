@@ -11,26 +11,6 @@ const Home = () => {
   const [list, setList] = useState([]);
   const [user, setUser] = useState(getUser());
 
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-          console.log("Entering getLocation");
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-        }
-      );
-    } else {
-      setError("Location is not supported by this browser.");
-    }
-    if (latitude && longitude) {
-      getRandomRestaurant();
-    }
-  };
-
   const getRandomRestaurant = async () => {
     try {
       console.log("Entering getRandomRestaurant");
@@ -61,6 +41,26 @@ const Home = () => {
     } catch (error) {
       console.error("Error fetching restaurants:", error);
       setError("Error fetching restaurants. Please try again later.");
+    }
+  };
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          console.log("Entering getLocation");
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      setError("Location is not supported by this browser.");
+    }
+    if (latitude && longitude) {
+      getRandomRestaurant();
     }
   };
 
@@ -106,6 +106,7 @@ const Home = () => {
             </a>
           </div>
           <ul>
+            <li>{randomRestaurant.name}</li>
             <li>Address: {randomRestaurant.location.address1}</li>
             <li>
               {randomRestaurant.location.city},{" "}
