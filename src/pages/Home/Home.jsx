@@ -106,7 +106,7 @@ const Home = () => {
             </a>
           </div>
           <ul>
-            <li>{randomRestaurant.name}</li>
+            <h3>{randomRestaurant.name}</h3>
             <li>Address: {randomRestaurant.location.address1}</li>
             <li>
               {randomRestaurant.location.city},{" "}
