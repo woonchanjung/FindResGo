@@ -31,7 +31,7 @@ app.get('/api/random_restaurant', async (req, res) => {
   console.log(`Fetching restaurants near latitude: ${latitude}, longitude: ${longitude}...`)
 
   // Make fetch request to Yelp API
-  const apiUrl = `https://api.yelp.com/v3/businesses/search?sort_by=best_match&&open_now=true&limit=20&latitude=${latitude}&longitude=${longitude}`;
+  const apiUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&sort_by=best_match&open_now=true&limit=20&latitude=${latitude}&longitude=${longitude}`;
   const options = {
     method: 'GET',
     headers: {
