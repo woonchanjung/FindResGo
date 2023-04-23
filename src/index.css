@@ -1,4 +1,29 @@
 /* CSS Custom Properties */
+
+* {
+  /* border: 1px solid red; */
+  text-align: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+}
+
+body {
+  background-image: url("/src/assets/aeira-atelier-xQl9hgWIpDY-unsplash.jpg");
+  background-size: cover;
+  background-position: center center; 
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
 :root {
   --white: #ffffff;
   --tan-1: #fbf9f6;
@@ -25,7 +50,6 @@
   background: none!important;
   border: none;
   padding: 0!important;
-  font-family: arial, sans-serif;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -180,6 +204,7 @@ button[type="submit"] {
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .DetailsContainer {

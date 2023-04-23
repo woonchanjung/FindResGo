@@ -18,7 +18,7 @@ const UserRestaurantList = () => {
   // Render restaurant data in UI
   return (
     <div className="DetailsContainer">
-      <h1>My Restaurant List</h1>
+      <h1>{user.name}'s Restaurants</h1>
       <hr></hr>
       <div class="row">
         {restaurants.map((restaurant) => (
