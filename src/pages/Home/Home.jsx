@@ -96,8 +96,8 @@ const Home = () => {
       {/* {error && <p>{error}</p>} */}
       {randomRestaurant ? (
         <div>
-          <h2>Lucky Restaurant</h2>
           <h2>Welcome, {user.name}</h2>
+          <h2>Lucky Restaurant</h2>
           <div className="ImageContainer">
             <a href={randomRestaurant.url}>
               <img
@@ -107,7 +107,7 @@ const Home = () => {
             </a>
           </div>
           <ul>
-            <h3>{randomRestaurant.name}{" "}</h3>
+            <h3>{randomRestaurant.name} </h3>
             <li>Address: {randomRestaurant.location.address1}</li>
             <li>
               {randomRestaurant.location.city},{" "}
